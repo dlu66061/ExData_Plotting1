@@ -1,0 +1,7 @@
+sub <- read.table("subset.txt", header = TRUE)
+sub$timeStamp <- strptime(paste(sub$Date, sub$Time), "%d/%m/%Y %H:%M:%S")
+sub$Date <- as.Date(sub$Date, "%d/%m/%Y")
+png(filename = "plot2.png", width = 480, height = 480, units = "px")
+plot(sub$timeStamp, sub$Global_active_power, type = "n", xlab="", ylab="Global Active Power (kilowatts)")
+lines(sub$timeStamp, sub$Global_active_power)
+dev.off()
